@@ -55,13 +55,13 @@ void Skeet::animate()
    // move the birds and the bullets
    for (auto element : birds)
    {
-      element->advance();
+      element->move();
       hitRatio.adjust(element->isDead() ? -1 : 0);
    }
    for (auto bullet : bullets)
       bullet->move(effects);
    for (auto effect : effects)
-      effect->fly();
+      effect->move();
       
    // hit detection
    for (auto element : birds)
@@ -82,7 +82,7 @@ void Skeet::animate()
    for (auto it = birds.begin(); it != birds.end();)
       if ((*it)->isDead())
       {
-         score.adjust((*it)->getPoints());
+         score.adjust((*it)->getPositions());
          it = birds.erase(it);
       }
       else
@@ -227,7 +227,7 @@ void drawText(const Point& topLeft, const char* text)
    void* pFont = GLUT_TEXT;
    glColor3f((GLfloat)1.0 /* red % */, (GLfloat)1.0 /* green % */, (GLfloat)1.0 /* blue % */);
 
-   // prepare to output the text from the top-left corner
+   // prepare to draw the text from the top-left corner
    glRasterPos2f((GLfloat)topLeft.getX(), (GLfloat)topLeft.getY());
 
    // loop through the text
@@ -241,21 +241,21 @@ void drawText(const Point & topLeft, const string & text)
 
 /************************
  * SKEET DRAW LEVEL
- * output everything that will be on the screen
+ * draw everything that will be on the screen
  ************************/
 void Skeet::drawLevel() const
 {
-   // output the background
+   // draw the background
    drawBackground(time.level() * .1, 0.0, 0.0);
    
-   // output the gun
+   // draw the gun
    gun.display();
          
-   // output the birds, bullets, and fragments
+   // draw the birds, bullets, and fragments
    for (auto effect : effects)
-      effect->render();
+      effect->draw();
    for (auto bullet : bullets)
-      bullet->output();
+      bullet->draw();
    for (auto element : birds)
       element->draw();
    
@@ -271,7 +271,7 @@ void Skeet::drawLevel() const
  ************************/
 void Skeet::drawStatus() const
 {
-   // output the text information
+   // draw the text information
    ostringstream sout;
    if (time.isGameOver())
    {
@@ -285,7 +285,7 @@ void Skeet::drawStatus() const
    }
    else
    {
-      // output the status timer
+      // draw the status timer
       drawTimer(1.0 - time.percentLeft(),
                      (time.level() - 0.0) * .1, 0.0, 0.0,
                      (time.level() - 1.0) * .1, 0.0, 0.0);
@@ -344,7 +344,7 @@ void Skeet::interact(const UserInput & ui)
  * This function generates a random number.
  *
  *    INPUT:   min, max : The number of values (min <= num <= max)
- *    OUTPUT   <return> : Return the integer
+ *    draw   <return> : Return the integer
  ****************************************************************/
 int random(int min, int max)
 {

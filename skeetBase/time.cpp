@@ -87,8 +87,8 @@ bool Time::isStartLevel() const
 }
 
 /************************
- * TIME ADVANCE
- * Advance the time counter by one frame
+ * TIME move
+ * move the time counter by one frame
  ************************/
 void Time::operator++(int postfix)
 {

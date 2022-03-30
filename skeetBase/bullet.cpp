@@ -127,7 +127,7 @@ void Shrapnel::move(std::list<Effect*> & effects)
 
 /***************************************************************/
 /***************************************************************/
-/*                            OUTPUT                           */
+/*                            draw                           */
 /***************************************************************/
 /***************************************************************/
 
@@ -184,20 +184,20 @@ void Bullet::drawDot(const Point& point, double radius,
 }
 
 /*********************************************
- * PELLET OUTPUT
+ * PELLET draw
  * Draw a pellet - just a 3-pixel dot
  *********************************************/
-void Pellet::output()
+void Pellet::draw()
 {
    if (!isDead())
       drawDot(pt, 3.0, 1.0, 1.0, 0.0);
 }
 
 /*********************************************
- * BOMB OUTPUT
+ * BOMB draw
  * Draw a bomb - many dots to make it have a soft edge
  *********************************************/
-void Bomb::output()
+void Bomb::draw()
 {
    if (!isDead())
    {
@@ -210,20 +210,20 @@ void Bomb::output()
 }
 
 /*********************************************
- * SHRAPNEL OUTPUT
+ * SHRAPNEL draw
  * Draw a fragment - a bright yellow dot
  *********************************************/
-void Shrapnel::output()
+void Shrapnel::draw()
 {
     if (!isDead())
        drawDot(pt, radius, 1.0, 1.0, 0.0);
 }
 
 /*********************************************
- * MISSILE OUTPUT
+ * MISSILE draw
  * Draw a missile - a line and a dot for the fins
  *********************************************/
-void Missile::output()
+void Missile::draw()
 {
     if (!isDead())
     {

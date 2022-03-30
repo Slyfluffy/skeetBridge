@@ -36,9 +36,9 @@ public:
     // move the gameplay by one unit of time
     void animate();
 
-    // output everything on the screen
-    void drawLevel()  const;    // output the game
-    void drawStatus() const;    // output the status information
+    // draw everything on the screen
+    void drawLevel()  const;    // draw the game
+    void drawStatus() const;    // draw the status information
 
     // is the game currently playing right now?
     bool isPlaying() const { return time.isPlaying();  }

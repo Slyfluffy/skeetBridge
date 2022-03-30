@@ -48,7 +48,7 @@ using namespace std;
 /*********************************************************************
  * SLEEP
  * Pause for a while.  We want to put the program to sleep until it
- * is time to output again.  Note that this requires us to tell the OS
+ * is time to draw again.  Note that this requires us to tell the OS
  * that we are idle.  the nanosleep function performs this task for us
  *   INPUT: msSleep: sleep time in milliseconds
  *********************************************************************/
@@ -76,8 +76,8 @@ void sleep(unsigned long msSleep)
 /************************************************************************
  * DRAW CALLBACK
  * This is the main callback from OpenGL. It gets called constantly by
- * the graphics engine to refresh and output the window.  Here we will
- * clear the background buffer, output on it, and send it to the forefront
+ * the graphics engine to refresh and draw the window.  Here we will
+ * clear the background buffer, draw on it, and send it to the forefront
  * when the appropriate time period has passsed.
  *
  * Note: This and all other callbacks can't be member functions, they must
@@ -99,7 +99,7 @@ void drawCallback()
    if (!ui.isTimeToDraw())
       sleep((unsigned long)((ui.getNextTick() - clock()) / 1000));
 
-   // from this point, set the next output time
+   // from this point, set the next draw time
    ui.setNextDrawTime();
 
    // bring forth the background buffer
@@ -218,7 +218,7 @@ void UserInput::keyEvent()
 
 /************************************************************************
  * INTEFACE : IS TIME TO DRAW
- * Have we waited long enough to output swap the background buffer with
+ * Have we waited long enough to draw swap the background buffer with
  * the foreground buffer?
  *************************************************************************/
 bool UserInput::isTimeToDraw()
@@ -228,7 +228,7 @@ bool UserInput::isTimeToDraw()
 
 /************************************************************************
  * INTERFACE : SET NEXT DRAW TIME
- * What time should we output the buffer again?  This is a function of
+ * What time should we draw the buffer again?  This is a function of
  * the current time and the frames per second.
  *************************************************************************/
 void UserInput::setNextDrawTime()
@@ -271,7 +271,7 @@ void (*UserInput::callBack)(const UserInput *, void *) = NULL;
  * INTEFACE : INITIALIZE
  * Initialize our drawing window.  This will set the size and position,
  * get ready for drawing, set up the colors, and everything else ready to
- * output the window.  All these are part of initializing Open GL.
+ * draw the window.  All these are part of initializing Open GL.
  *  INPUT    argc:       Count of command-line arguments from main
  *           argv:       The actual command-line parameters
  *           title:      The text for the titlebar of the window
@@ -320,7 +320,7 @@ void UserInput::initialize(int argc, char ** argv, const char * title, const Poi
  * INTERFACE : RUN
  *            Start the main graphics loop and play the game
  * INPUT callBack:   Callback function.  Every time we are beginning
- *                   to output a new frame, we first callback to the client
+ *                   to draw a new frame, we first callback to the client
  *                   to see if he wants to do anything, such as move
  *                   the game pieces or respond to input
  *       p:          Void point to whatever the caller wants.  You

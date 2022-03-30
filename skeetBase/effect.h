@@ -8,25 +8,19 @@
  ************************************************************************/
 
 #pragma once
+#include "flyer.h"
 #include "point.h"
 
 /**********************
  * Effect: stuff that is not interactive
  **********************/
-class Effect
+class Effect : public Flyer
 {
 protected:
-    Point pt;      // location of the effect
     double age;    // 1.0 = new, 0.0 = dead
 public:
     // create a fragment based on the velocity and position of the bullet
-    Effect(const Point & pt) : pt(pt), age(0.5) {}
-    
-    // draw it
-    virtual void render() const = 0;
-    
-    // move it forward with regards to inertia. Let it age
-    virtual void fly() = 0;
+   Effect(const Point & pt) : age(0.5) { this->pt = pt; }
     
     // it is dead when age goes to 0.0
     bool isDead() const { return age <= 0.0; }
@@ -46,10 +40,10 @@ public:
     Fragment(const Point & pt, const Velocity & v);
     
     // draw it
-    void render() const;
+    void draw();
     
     // move it forward with regards to inertia. Let it age
-    void fly();
+    void move();
 };
 
 /**********************
@@ -65,10 +59,10 @@ public:
     Streek(const Point & pt, Velocity v);
     
     // draw it
-    void render() const;
+    void draw();
     
     // move it forward with regards to inertia. Let it age
-    void fly();
+    void move();
 };
 
 /**********************
@@ -84,8 +78,8 @@ public:
     Exhaust(const Point & pt, Velocity v);
     
     // draw it
-    void render() const;
+    void draw();
     
     // move it forward with regards to inertia. Let it age
-    void fly();
+    void move();
 };

@@ -30,7 +30,7 @@ class UserInput
 {
 public:
    // Default constructor useful for setting up the random variables
-   // or for opening the file for output
+   // or for opening the file for draw
    UserInput() {  }
 
    // Constructor if you want to set up the window with anything but
@@ -46,10 +46,10 @@ public:
    // Is it time to redraw the screen
    bool isTimeToDraw();
 
-   // Set the next output time based on current time and time period
+   // Set the next draw time based on current time and time period
    void setNextDrawTime();
 
-   // Retrieve the next tick time... the time of the next output.
+   // Retrieve the next tick time... the time of the next draw.
    unsigned long getNextTick() { return nextTick; };
 
    // How many frames per second are we configured for?
@@ -80,7 +80,7 @@ private:
 
    static bool         initialized;  // only run the constructor once!
    static double       timePeriod;   // interval between frame draws
-   static unsigned long nextTick;     // time (from clock()) of our next output
+   static unsigned long nextTick;     // time (from clock()) of our next draw
 
    static int  isDownPress;          // is the down arrow currently pressed?
    static int  isUpPress;            //    "   up         "
@@ -96,8 +96,8 @@ private:
 /************************************************************************
  * DRAW CALLBACK
  * This is the main callback from OpenGL. It gets called constantly by
- * the graphics engine to refresh and output the window.  Here we will
- * clear the background buffer, output on it, and send it to the forefront
+ * the graphics engine to refresh and draw the window.  Here we will
+ * clear the background buffer, draw on it, and send it to the forefront
  * when the appropriate time period has passsed.
  *
  * Note: This and all other callbacks can't be member functions, they must

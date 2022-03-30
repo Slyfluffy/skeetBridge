@@ -56,6 +56,7 @@
 		C1D4EAE62577F578002B56E3 /* uiInteract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiInteract.h; sourceTree = "<group>"; };
 		C1D4EAF02577F58C002B56E3 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		C1D4EAF12577F58C002B56E3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		CE6E3C2327F3E94C0014349C /* flyer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = flyer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,14 +75,15 @@
 		C1D4EACA2577F487002B56E3 = {
 			isa = PBXGroup;
 			children = (
-				C159391D271E278800A7F857 /* bullet.h */,
-				C1841325273E9C4400143AB2 /* bullet.cpp */,
 				C1841324273E9C4400143AB2 /* bird.h */,
 				C1841327273E9C4700143AB2 /* bird.cpp */,
+				C159391D271E278800A7F857 /* bullet.h */,
+				C1841325273E9C4400143AB2 /* bullet.cpp */,
 				C16B8F532744AFD8009CC1DC /* score.h */,
 				C16B8F502744ABDE009CC1DC /* score.cpp */,
 				C15451E427403CD70095997B /* effect.h */,
 				C15451E527403ED30095997B /* effect.cpp */,
+				CE6E3C2327F3E94C0014349C /* flyer.h */,
 				C1841323273E9C4400143AB2 /* game.cpp */,
 				C179F5FD2710DE0E00BD3050 /* gun.h */,
 				C1841326273E9C4500143AB2 /* gun.cpp */,

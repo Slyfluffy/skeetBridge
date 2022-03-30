@@ -38,7 +38,7 @@
   *    INPUT  origin   The center point we will rotate around
   *           x,y      Offset from center that we will be rotating
   *           rotation Rotation in degrees
-  *    OUTPUT point    The new position
+  *    draw point    The new position
   *************************************************************************/
 Point rotate(const Point& origin,
    double x, double y, double rotation) 

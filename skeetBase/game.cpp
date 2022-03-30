@@ -19,7 +19,7 @@ Point Bird::dimensions(WIDTH, HEIGHT);
 
  /*************************************
   * All the interesting work happens here, when
-  * I get called back from OpenGL to output a frame.
+  * I get called back from OpenGL to draw a frame.
   * When I am finished drawing, then the graphics
   * engine will wait until the proper amount of
   * time has passed and put the drawing on the screen.
@@ -36,7 +36,7 @@ void callBack(const UserInput* pUI, void* p)
    // move the stuff
    pSkeet->animate();
 
-   // output the stuff
+   // draw the stuff
    if (pSkeet->isPlaying())
       pSkeet->drawLevel();
    else
